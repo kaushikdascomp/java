@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -36,7 +37,7 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("Application started::");
-		Library library = new Library();
+		/*Library library = new Library();
 		library.setLibraryName("Bangalore");
 
 
@@ -57,12 +58,12 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 		bookSet.add(book1);
 		bookSet.add(book2);
 		library.setBookList(bookSet);
-		Library libraryCreated = libraryDataController.createLibrary(library);
+		ResponseEntity<Library> libraryCreated = libraryDataController.createLibrary(library);
 
 		System.out.println("Data:  "+libraryCreated);
 		System.out.println("\nfindAll()");
 		List<Book> allBooksFromLibrary = libraryDataController.getAllBooksFromLibrary(1l);
-		System.out.println(allBooksFromLibrary);
+		System.out.println(allBooksFromLibrary);*/
 	}
 
 	@Bean

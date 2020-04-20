@@ -34,8 +34,6 @@ public class LibraryDataController {
                 return libraryManagementService.getAllBooksFromLibrary(id);
         }
 
-
-
         @PostMapping("/save/{libraryId}")
         @ResponseStatus(HttpStatus.OK)
         public ResponseEntity<Library> addBookToLibrary(@PathVariable("libraryId") long id, @RequestBody Book book) {
@@ -48,13 +46,18 @@ public class LibraryDataController {
                 }else{
                         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
                 }
-
         }
 
         @PostMapping("/createlibrary")
-        public @ResponseBody Library createLibrary(@RequestBody Library library){
+        public ResponseEntity<Library> createLibrary(@RequestBody Library library){
                 logger.info("Libray Controller: START : create New Library ");
-                return libraryManagementService.save(library);
+                Library saveLibrary = libraryManagementService.save(library);
+                if(saveLibrary != null){
+                        return new ResponseEntity<>(saveLibrary, HttpStatus.OK);
+                }else{
+                        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
+
         }
 
         @PutMapping("/update/{id}")
@@ -86,10 +89,6 @@ public class LibraryDataController {
                         return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
                 }
         }
-
-
-
-
 
 
 }

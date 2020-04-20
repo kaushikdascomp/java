@@ -6,6 +6,7 @@ import com.java.library.books.domain.Library;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -43,6 +45,33 @@ public class BookRepositoryTest {
         assertEquals( java.util.Optional.of(2l), java.util.Optional.ofNullable(allBooksFromLibrary.get(0).getId()));
         assertEquals( java.util.Optional.of(3l), java.util.Optional.ofNullable(allBooksFromLibrary.get(1).getId()));
 
+    }
+
+   @BeforeTestClass
+    public void testCreateLibrary(){
+        Library library = new Library();
+        library.setLibraryName("Bangalore");
+
+
+        Book book1 = new Book();
+        book1.setAuthor("ABV");
+        book1.setIsbn("IDGB453543");
+        book1.setPublisher("Tata McGraaw:: ");
+        book1.setLanguage("English");
+        book1.setLibrary(library);
+        Book book2 = new Book();
+        book2.setAuthor("ABdsfdfV");
+        book2.setIsbn("IDGBfds453543");
+        book2.setPublisher("Tatafdd McGraaw:: ");
+        book2.setLanguage("Engliddsh");
+        book2.setLibrary(library);
+        //bookManagementService.save(book1);
+        List<Book> bookSet = new ArrayList<>();
+        bookSet.add(book1);
+        bookSet.add(book2);
+        library.setBookList(bookSet);
+       ResponseEntity<Library> library1 = libraryDataController.createLibrary(library);
+       System.out.println(library1);
     }
 
     @Test
