@@ -36,15 +36,16 @@ public class LibraryDataController {
 
         @PostMapping("/save/{libraryId}")
         @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<Library> addBookToLibrary(@PathVariable("libraryId") long id, @RequestBody Book book) {
+        public @ResponseBody Library addBookToLibrary(@PathVariable("libraryId") long id, @RequestBody Book book) {
                 logger.info("Libray Controller: START : addBookToLibrary ");
                 Optional<Library> getLibraryDetails = Optional.ofNullable(libraryManagementService.findById(id));
                 if (getLibraryDetails.isPresent()) {
                         Library library = getLibraryDetails.get();
                         library.getBookList().add(book);
-                        return new ResponseEntity<>(libraryManagementService.save(library),HttpStatus.OK);
+                        Library addBookToLibrary = libraryManagementService.save(library);
+                        return addBookToLibrary;
                 }else{
-                        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                        return getLibraryDetails.get();
                 }
         }
 

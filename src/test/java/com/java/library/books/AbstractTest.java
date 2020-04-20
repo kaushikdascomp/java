@@ -1,6 +1,11 @@
 package com.java.library.books;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.java.library.books.domain.Book;
+import com.java.library.books.domain.Library;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -40,5 +45,56 @@ public abstract class AbstractTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(json, clazz);
+    }
+
+
+    public Library libraryObjectCreation() {
+        Library library = new Library();
+        library.setLibraryName("Bangalore");
+
+
+        Book book1 = new Book();
+        book1.setAuthor("ABV");
+        book1.setIsbn("IDGB453543");
+        book1.setPublisher("Tata McGraaw:: ");
+        book1.setLanguage("English");
+        book1.setLibrary(library);
+        Book book2 = new Book();
+        book2.setAuthor("ABdsfdfV");
+        book2.setIsbn("IDGBfds453543");
+        book2.setPublisher("Tatafdd McGraaw:: ");
+        book2.setLanguage("Engliddsh");
+        book2.setLibrary(library);
+        //bookManagementService.save(book1);
+        List<Book> bookSet = new ArrayList<>();
+        bookSet.add(book1);
+        bookSet.add(book2);
+        library.setBookList(bookSet);
+        return library;
+    }
+
+    public List<Book> bookList(){
+        Library library = new Library();
+        library.setLibraryName("Bangalore");
+
+
+        Book book1 = new Book();
+        book1.setAuthor("ABV");
+        book1.setIsbn("IDGB453543");
+        book1.setPublisher("Tata McGraaw:: ");
+        book1.setLanguage("English");
+        book1.setLibrary(library);
+        Book book2 = new Book();
+        book2.setAuthor("ABdsfdfV");
+        book2.setIsbn("IDGBfds453543");
+        book2.setPublisher("Tatafdd McGraaw:: ");
+        book2.setLanguage("Engliddsh");
+        book2.setLibrary(library);
+        //bookManagementService.save(book1);
+        List<Book> bookSet = new ArrayList<>();
+        bookSet.add(book1);
+        bookSet.add(book2);
+        library.setBookList(bookSet);
+        return bookSet;
     }
 }
