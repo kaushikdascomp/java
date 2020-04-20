@@ -37,6 +37,10 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("Application started::");
+		//initializeLibraryForWeb();
+	}
+
+	private void initializeLibraryForWeb() {
 		Library library = new Library();
 		library.setLibraryName("Bangalore");
 
