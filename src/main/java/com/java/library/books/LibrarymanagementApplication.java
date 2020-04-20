@@ -37,7 +37,7 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("Application started::");
-		/*Library library = new Library();
+		Library library = new Library();
 		library.setLibraryName("Bangalore");
 
 
@@ -47,6 +47,7 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 		book1.setPublisher("Tata McGraaw:: ");
 		book1.setLanguage("English");
 		book1.setLibrary(library);
+
 		Book book2 = new Book();
 		book2.setAuthor("ABdsfdfV");
 		book2.setIsbn("IDGBfds453543");
@@ -60,10 +61,10 @@ public class LibrarymanagementApplication implements CommandLineRunner{
 		library.setBookList(bookSet);
 		ResponseEntity<Library> libraryCreated = libraryDataController.createLibrary(library);
 
-		System.out.println("Data:  "+libraryCreated);
+		System.out.println("Data:  "+libraryCreated.getBody().toString());
 		System.out.println("\nfindAll()");
 		List<Book> allBooksFromLibrary = libraryDataController.getAllBooksFromLibrary(1l);
-		System.out.println(allBooksFromLibrary);*/
+		System.out.println(allBooksFromLibrary.get(0).getAuthor());
 	}
 
 	@Bean

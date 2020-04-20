@@ -47,5 +47,12 @@ public class Library {
         this.bookList = bookList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Library{" +
+                "id=" + id +
+                ", libraryName='" + libraryName + '\'' +
+                ", bookList=" + bookList +
+                '}';
+    }
 }

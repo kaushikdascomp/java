@@ -106,6 +106,17 @@ public class Book implements Serializable {
         this.library = library;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", subject='" + subject + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", author='" + author + '\'' +
+                ", language='" + language + '\'' +
+                ", pages=" + pages +
+                '}';
+    }
 }
