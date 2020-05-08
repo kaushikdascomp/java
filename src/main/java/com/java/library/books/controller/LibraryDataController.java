@@ -41,6 +41,7 @@ public class LibraryDataController {
                 Optional<Library> getLibraryDetails = Optional.ofNullable(libraryManagementService.findById(id));
                 if (getLibraryDetails.isPresent()) {
                         Library library = getLibraryDetails.get();
+                        book.setLibrary(library);
                         library.getBookList().add(book);
                         Library addBookToLibrary = libraryManagementService.save(library);
                         return addBookToLibrary;
@@ -52,6 +53,7 @@ public class LibraryDataController {
         @PostMapping("/createlibrary")
         public ResponseEntity<Library> createLibrary(@RequestBody Library library){
                 logger.info("Libray Controller: START : create New Library ");
+
                 Library saveLibrary = libraryManagementService.save(library);
                 if(saveLibrary != null){
                         return new ResponseEntity<>(saveLibrary, HttpStatus.OK);

@@ -10,6 +10,7 @@ public interface LibraryManagementService {
 
 
     Library findById(Long aLong);
+
     Library save(Library library);
 
     List<Book> getAllBooksFromLibrary(Long aLong);
